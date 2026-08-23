@@ -1,0 +1,8 @@
+title: 王举的科研博客
+description: 记录 SSPP 微波传感、液体智能检测与 AI 自动化研究
+author: 王举
+lang: zh-CN
+url: https://coolwj.github.io
+markdown: kramdown
+permalink: /articles/:title/
+
