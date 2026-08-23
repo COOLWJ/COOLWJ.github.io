@@ -45,7 +45,8 @@
       </a>
 
       <a
-        href="https://github.com/COOLWJ/COOLWJ.github.io/new/main/_posts"
+        href="#"
+        id="publish-article"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -61,6 +62,33 @@
   <footer>
     © {{ 'now' | date: '%Y' }} 王举 · 保持好奇，持续记录。
   </footer>
+
+  <script>
+    const publishButton = document.getElementById("publish-article");
+
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
+    const date = `${year}-${month}-${day}`;
+
+    const filename = `${date}-new-article.md`;
+
+    const articleTemplate = `---
+layout: post
+title: "请填写文章标题"
+date: ${date}
+category: 技术文章
+---
+
+这里开始写文章正文。
+`;
+
+    publishButton.href =
+      "https://github.com/COOLWJ/COOLWJ.github.io/new/main/_posts" +
+      "?filename=" + encodeURIComponent(filename) +
+      "&value=" + encodeURIComponent(articleTemplate);
+  </script>
 
 </body>
 
