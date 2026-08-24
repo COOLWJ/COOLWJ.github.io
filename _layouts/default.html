@@ -1,102 +1,89 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>
-    {% if page.title %}
-      {{ page.title }} ·
-    {% endif %}
-    {{ site.title }}
-  </title>
-
-  <meta
-    name="description"
-    content="{{ page.excerpt | default: site.description | strip_html }}"
-  >
-
-  <link
-    rel="stylesheet"
-    href="{{ '/assets/style.css' | relative_url }}"
-  >
-</head>
-
-<body{% if page.layout == 'post' %} class="post-page"{% endif %}>
-
-  <header class="site-header">
-    <a class="brand" href="{{ '/' | relative_url }}">
-      WJ
-      <span>{{ site.title }}</span>
-    </a>
-
-    <nav>
-      <a href="{{ '/' | relative_url }}">
-        首页
-      </a>
-
-      <a href="{{ '/archives/' | relative_url }}">归档</a>
-      <a href="{{ '/categories/' | relative_url }}">分类</a>
-      <a href="{{ '/tags/' | relative_url }}">标签</a>
-      <a href="{{ '/search/' | relative_url }}">搜索</a>
-
-      <a href="{{ '/about/' | relative_url }}">
-        关于我
-      </a>
-
-      <a
-        href="#"
-        id="publish-article"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        发布文章
-      </a>
-    </nav>
-  </header>
-
-  <main class="site-main">
-    {{ content }}
-  </main>
-
-  <footer>
-    © {{ 'now' | date: '%Y' }} 王举 · 保持好奇，持续记录。
-  </footer>
-
-  <button class="back-to-top" type="button" aria-label="返回顶部">↑</button>
-
-  <script>
-    const publishButton = document.getElementById("publish-article");
-
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, "0");
-    const day = String(today.getDate()).padStart(2, "0");
-    const date = `${year}-${month}-${day}`;
-
-    const filename = `${date}-new-article.md`;
-
-    const articleTemplate = `---
+const articleTemplate = `---
 layout: post
 title: "请填写文章标题"
 date: ${date}
-category: 技术文章
+updated: ${date}
+category: 项目记录
+tags:
+  - 技术标签1
+  - 技术标签2
+  - 技术踩坑
 ---
 
-这里开始写文章正文。
+> 简要说明这篇文章记录的项目、问题或学习内容。
+
+## 一、背景与目标
+
+说明为什么要做这件事，以及希望达到什么目标。
+
+## 二、环境与工具
+
+- 操作系统：
+- 硬件设备：
+- 软件版本：
+- 开发工具：
+
+## 三、实现过程
+
+### 3.1 第一步
+
+记录具体操作过程。
+
+### 3.2 第二步
+
+继续记录实现过程。
+
+代码示例：
+
+\`\`\`python
+# 在这里填写代码
+print("Hello, world!")
+\`\`\`
+
+## 四、遇到的问题
+
+### 问题一
+
+描述错误现象或错误提示。
+
+\`\`\`text
+在这里粘贴错误信息
+\`\`\`
+
+### 解决方法
+
+说明排查过程和最终解决办法。
+
+## 五、最终效果
+
+在这里放置运行结果、实验数据或项目截图。
+
+图片插入格式：
+
+\`\`\`markdown
+![图片说明](/images/图片名称.png)
+\`\`\`
+
+## 六、参考视频
+
+<!-- 把 BVxxxxxxxxxx 替换为真实的 Bilibili BV 号 -->
+
+<div class="video-container">
+  <iframe
+    src="https://player.bilibili.com/player.html?bvid=BVxxxxxxxxxx&autoplay=0"
+    scrolling="no"
+    frameborder="0"
+    allowfullscreen="true">
+  </iframe>
+</div>
+
+[Bilibili 原视频链接](https://www.bilibili.com/video/BVxxxxxxxxxx/)
+
+## 七、总结
+
+总结本次实践的主要收获、遗留问题和下一步计划。
+
+## 参考资料
+
+- [参考资料名称](https://example.com/)
 `;
-
-    publishButton.href =
-      "https://github.com/COOLWJ/COOLWJ.github.io/new/main/_posts" +
-      "?filename=" + encodeURIComponent(filename) +
-      "&value=" + encodeURIComponent(articleTemplate);
-
-    const topButton = document.querySelector(".back-to-top");
-    window.addEventListener("scroll", () => topButton.classList.toggle("visible", window.scrollY > 500));
-    topButton.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
-  </script>
-
-</body>
-
-</html>
