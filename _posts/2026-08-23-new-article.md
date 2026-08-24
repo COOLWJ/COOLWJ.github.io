@@ -2,7 +2,11 @@
 layout: post
 title: "请填写文章标题"
 date: 2026-08-23
-category: 技术文章
+category: Linux与开发环境
+tags:
+  - 网络代理
+  - Electron
+  - 技术踩坑
 ---
 
 ## 二、 终极解决方案（含代码逐行剖析）

@@ -2,7 +2,11 @@
 layout: post
 title: "【踩坑指南】为什么网页端可以用，客户端用不了？ChatGPT 报 403 的底层原理与终极解法"
 date: 2026-08-23
-category: 技术文章
+category: Linux与开发环境
+tags:
+  - ChatGPT
+  - 网络代理
+  - 技术踩坑
 ---
 
 

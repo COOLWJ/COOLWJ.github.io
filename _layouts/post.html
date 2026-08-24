@@ -1,5 +1,17 @@
 ---
 layout: default
 ---
-<article class="article"><a class="back" href="{{ '/' | relative_url }}">← 返回首页</a><p class="meta">{{ page.date | date: "%Y年%m月%d日" }} · {{ page.category }}</p><h1>{{ page.title }}</h1><div class="content">{{ content }}</div></article>
-
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+<div class="content-shell article-shell">
+  {% include sidebar.html mode="toc" %}
+  <article class="article">
+    <a class="back" href="{{ '/' | relative_url }}">← 返回首页</a>
+    <p class="meta">{{ page.date | date: "%Y年%m月%d日" }} · <a href="{{ '/categories/' | relative_url }}#{{ page.category | slugify }}">{{ page.category }}</a></p>
+    <h1>{{ page.title }}</h1>
+    {% if page.tags %}<div class="post-tags">{% for tag in page.tags %}<a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}"># {{ tag }}</a>{% endfor %}</div>{% endif %}
+    <div class="content" id="article-content">{{ content }}</div>
+    <div class="post-copyright">本文为个人学习与实践记录。如需转载，请注明作者与原文链接。</div>
+    <nav class="post-nav" aria-label="文章翻页">{% if page.previous %}<a href="{{ page.previous.url | relative_url }}">← {{ page.previous.title }}</a>{% else %}<span></span>{% endif %}{% if page.next %}<a href="{{ page.next.url | relative_url }}">{{ page.next.title }} →</a>{% endif %}</nav>
+  </article>
+</div>
+<script src="{{ '/assets/site.js' | relative_url }}"></script>

@@ -1,0 +1,4 @@
+<aside class="sidebar">
+  <div class="profile-card"><div class="avatar" aria-hidden="true">WJ</div><h2>王举</h2><p>机器人 · 机器视觉 · 嵌入式<br>微波感知 · AI 自动化</p><div class="site-stats"><a href="{{ '/archives/' | relative_url }}"><b>{{ site.posts | size }}</b><span>文章</span></a><a href="{{ '/categories/' | relative_url }}"><b>{{ site.categories | size }}</b><span>分类</span></a><a href="{{ '/tags/' | relative_url }}"><b>{{ site.tags | size }}</b><span>标签</span></a></div><div class="profile-links"><a href="https://github.com/COOLWJ" target="_blank" rel="noopener">GitHub</a><a href="{{ '/about/' | relative_url }}">关于我</a></div></div>
+  {% if include.mode == 'toc' %}<nav class="toc-card" aria-label="文章目录"><p class="eyebrow">CONTENTS</p><h3>文章目录</h3><ol id="toc-list"><li class="toc-empty">正在生成目录…</li></ol></nav>{% endif %}
+</aside>

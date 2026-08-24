@@ -5,4 +5,11 @@ lang: zh-CN
 url: https://coolwj.github.io
 markdown: kramdown
 permalink: /articles/:title/
+timezone: Asia/Shanghai
 
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post

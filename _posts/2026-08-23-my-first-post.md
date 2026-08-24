@@ -3,6 +3,10 @@ layout: post
 title: "我的第一篇科研文章"
 date: 2026-08-23
 category: 科研笔记
+tags:
+  - SSPP
+  - 微波传感
+  - CNN
 ---
 
 这是我的第一篇博客文章。以后可以把这里替换成自己的科研记录。
@@ -22,4 +26,3 @@ category: 科研笔记
 ```markdown
 ![实验设备](/images/device.jpg)
 ```
-
