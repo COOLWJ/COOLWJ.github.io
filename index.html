@@ -1,7 +1,10 @@
 ---
 layout: default
 ---
-<section class="hero"><p class="eyebrow">王举的技术积累</p><h1>记录学习、项目与工程实践</h1><p>机器人 · 机器视觉 · 嵌入式系统 · 微波感知 · AI 自动化</p></section>
+<section class="hero">
+  <h1>记录学习、项目与工程实践</h1>
+  <p>机器人 · 机器视觉 · 嵌入式系统 · 微波感知 · AI 自动化</p>
+</section>
 <div class="content-shell">
   {% include sidebar.html %}
   <section id="articles" class="feed"><div class="section-title"><h2>最新文章</h2></div><div class="post-list">{% for post in site.posts %}<article><h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3><p class="meta">发表于 {{ post.date | date: "%Y-%m-%d" }} · 分类于 {{ post.category }}</p><p>{{ post.excerpt | strip_html | truncate: 150 }}</p>{% if post.tags %}<div class="post-tags">{% for tag in post.tags %}<a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}">#{{ tag }}</a>{% endfor %}</div>{% endif %}<a class="read" href="{{ post.url | relative_url }}">阅读全文 »</a></article>{% endfor %}</div></section>
