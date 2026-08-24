@@ -12,6 +12,16 @@
       item.appendChild(link); toc.appendChild(item);
     });
     if (!headings.length) toc.innerHTML = '<li class="toc-empty">本文暂无分节</li>';
+    if (headings.length) {
+      const links = [...toc.querySelectorAll("a")];
+      const setActive = id => links.forEach(link => link.classList.toggle("active", link.hash === `#${id}`));
+      setActive(headings[0].id);
+      const observer = new IntersectionObserver(entries => {
+        const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible[0]) setActive(visible[0].target.id);
+      }, { rootMargin: "-15% 0px -70% 0px", threshold: 0 });
+      headings.forEach(heading => observer.observe(heading));
+    }
   }
   const progress = document.querySelector(".reading-progress span");
   if (progress) window.addEventListener("scroll", () => { const max = document.documentElement.scrollHeight - innerHeight; progress.style.width = `${max > 0 ? Math.min(100, scrollY / max * 100) : 0}%`; }, { passive: true });
