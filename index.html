@@ -1,5 +1,127 @@
 ---
 layout: default
+title: 首页
 ---
-<section class="hero"><p class="eyebrow">AUTOMATION · MICROWAVE SENSING · AI</p><h1>用传感器理解物质，<br><em>用智能让检测落地。</em></h1><p>你好，我是王举。这里记录我在 SSPP 人工表面等离激元微波传感、液体介电特性检测与 AI 自动化应用方面的研究和思考。</p></section><section id="articles"><div class="section-title"><p class="eyebrow">LATEST WRITING</p><h2>最新文章</h2></div><div class="posts">{% for post in site.posts %}<article><p class="meta">{{ post.date | date: "%Y.%m.%d" }} · {{ post.category }}</p><h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3><p>{{ post.excerpt | strip_html | truncate: 110 }}</p><a class="read" href="{{ post.url | relative_url }}">阅读文章 →</a></article>{% endfor %}</div></section><section class="research"><p class="eyebrow">RESEARCH FOCUS</p><h2>研究方向</h2><div><article><b>01</b><h3>SSPP 微波传感</h3><p>人工表面等离激元结构与高灵敏度微波传感。</p></article><article><b>02</b><h3>液体智能检测</h3><p>介电特性、幅频响应以及品质与浓度变化识别。</p></article><article><b>03</b><h3>AI 自动化应用</h3><p>CNN 分类、在线监测与智能生产线报警联动。</p></article></div></section>
 
+<div class="home-layout">
+
+  <!-- 左侧个人资料 -->
+  <aside class="profile-sidebar">
+    <div class="profile-card">
+
+      <div class="profile-avatar">WJ</div>
+
+      <h1 class="profile-name">王举</h1>
+      <p class="profile-role">机械工程研究生 · 工程技术学习者</p>
+
+      <p class="profile-description">
+        聚焦机械臂智能控制、机器视觉、嵌入式开发与软硬件系统联调，
+        记录学习过程、项目实践和技术问题。
+      </p>
+
+      <div class="profile-tags">
+        <span>ROS2</span>
+        <span>机械臂</span>
+        <span>机器视觉</span>
+        <span>YOLO</span>
+        <span>STM32</span>
+        <span>嵌入式</span>
+      </div>
+
+      <div class="profile-links">
+        <a href="{{ '/about/' | relative_url }}">关于我</a>
+
+        <a href="https://github.com/COOLWJ"
+           target="_blank"
+           rel="noopener">
+          GitHub
+        </a>
+
+        <a href="https://github.com/COOLWJ/COOLWJ.github.io/new/main/_posts"
+           target="_blank"
+           rel="noopener"
+           class="publish-button">
+          发布文章
+        </a>
+      </div>
+
+    </div>
+  </aside>
+
+  <!-- 右侧文章区域 -->
+  <main class="article-section">
+
+    <header class="article-header">
+      <div>
+        <h2>技术文章</h2>
+        <p>记录研究、开发、调试与工程实践</p>
+      </div>
+
+      <nav class="home-nav">
+        <a href="{{ '/' | relative_url }}">首页</a>
+        <a href="{{ '/archives/' | relative_url }}">归档</a>
+        <a href="{{ '/categories/' | relative_url }}">分类</a>
+        <a href="{{ '/tags/' | relative_url }}">标签</a>
+      </nav>
+    </header>
+
+    {% if site.posts.size > 0 %}
+
+      <div class="post-list">
+
+        {% for post in site.posts %}
+
+          <article class="post-card">
+
+            <div class="post-meta">
+              <time datetime="{{ post.date | date_to_xmlschema }}">
+                {{ post.date | date: "%Y-%m-%d" }}
+              </time>
+
+              {% if post.category %}
+                <span class="post-category">{{ post.category }}</span>
+              {% endif %}
+            </div>
+
+            <h2 class="post-title">
+              <a href="{{ post.url | relative_url }}">
+                {{ post.title }}
+              </a>
+            </h2>
+
+            {% if post.excerpt %}
+              <p class="post-excerpt">
+                {{ post.excerpt | strip_html | truncate: 150 }}
+              </p>
+            {% endif %}
+
+            {% if post.tags %}
+              <div class="post-tags">
+                {% for tag in post.tags %}
+                  <span># {{ tag }}</span>
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            <a class="read-more" href="{{ post.url | relative_url }}">
+              阅读全文 →
+            </a>
+
+          </article>
+
+        {% endfor %}
+
+      </div>
+
+    {% else %}
+
+      <div class="empty-posts">
+        <h3>还没有文章</h3>
+        <p>在仓库的 _posts 文件夹中创建第一篇文章。</p>
+      </div>
+
+    {% endif %}
+
+  </main>
+
+</div>
